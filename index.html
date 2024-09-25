@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>전자 서명</title>
-    <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
     <style>
-      canvas {
-        border: 1px solid black;
-        display: block;
-        margin: 0 auto;
-      }
+        #signature-pad {
+            border: 1px solid #000;
+            width: 400px;
+            height: 200px;
+        }
+        .buttons {
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -18,7 +20,7 @@
     <canvas id="signature-pad"></canvas>
     <div class="buttons">
         <button id="clear">지우기</button>
-        <button id="save">저장</button>
+        <button id="save">제출</button>
     </div>
     <img id="signature-image" alt="서명 이미지" style="display:none;"/>
     
