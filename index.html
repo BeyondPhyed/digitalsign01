@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전자 서명</title>
+    <style>
+        #signature-pad {
+            border: 1px solid #000;
+            width: 500px;
+            height: 300px;
+        }
+        .buttons {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>전자 서명</h2>
+    <canvas id="signature-pad"></canvas>
+    <div class="buttons">
+        <button id="clear">지우기</button>
+        <button id="save">저장</button>
+    </div>
+    <img id="signature-image" alt="서명 이미지" style="display:none;"/>
+    
+    <script src="script.js"></script>
+</body>
+</html>
