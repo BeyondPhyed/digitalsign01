@@ -46,9 +46,12 @@ window.onload = function () {
         signatureImage.style.display = "none";
     });
 
+    // 이미지 파일 다운로드 기능 추가
     saveButton.addEventListener("click", () => {
         const dataURL = canvas.toDataURL("image/png");
-        signatureImage.src = dataURL;
-        signatureImage.style.display = "block";
+        const downloadLink = document.createElement("a");
+        downloadLink.href = dataURL;
+        downloadLink.download = "signature.png"; // 다운로드될 파일 이름 설정
+        downloadLink.click(); // 다운로드 트리거
     });
 };
