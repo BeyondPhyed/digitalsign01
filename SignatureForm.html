@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+    <style>
+      canvas {
+        border: 1px solid black;
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="signature-pad" width="400" height="200"></canvas>
+    <br>
+    <button onclick="clearPad()">지우기</button>
+    <button onclick="submitSignature()">서명 제출</button>
+
+    <script>
+      var canvas = document.getElementById('signature-pad');
+      var signaturePad = new SignaturePad(canvas);
+
+      function clearPad() {
+        signaturePad.clear();
+      }
+
+      function submitSignature() {
+        if (signaturePad.isEmpty()) {
+          alert("서명이 없습니다.");
+          return;
+        }
+        
+        var dataUrl = signaturePad.toDataURL();
+        google.script.run
+          .withSuccessHandler(function(response) {
+            alert(response);
+            google.script.host.close();
+          })
+          .saveSignature(dataUrl);
+      }
+    </script>
+  </body>
+</html>
+
+
+
+
+
+<!--  주석처리 
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+    <script>
+      function clearCanvas() {
+        var canvas = document.getElementById('signature-pad');
+        var ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      }
+
+      function saveSignature() {
+        var canvas = document.getElementById('signature-pad');
+        var dataUrl = canvas.toDataURL();
+        google.script.run.withSuccessHandler(function(url) {
+          document.getElementById('result').innerHTML = '서명이 저장되었습니다: <a href="' + url + '" target="_blank">보기</a>';
+        }).saveSignature(dataUrl);
+      }
+    </script>
+  </head>
+  <body>
+    <canvas id="signature-pad" width="400" height="200"></canvas>
+    <br>
+    <button onclick="clearCanvas()">지우기</button>
+    <button onclick="saveSignature()">서명 저장</button>
+    <div id="result"></div>
+  </body>
+</html>
+
+-->
